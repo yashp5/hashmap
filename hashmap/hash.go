@@ -6,7 +6,7 @@ type HashMap interface {
 	Delete(key string) bool
 }
 
-func hash(key string) int {
+func Hash(key string) int {
 	fnvPrime := uint64(1099511628211)
 	hash := uint64(14695981039346656037)
 	for i := range len(key) {

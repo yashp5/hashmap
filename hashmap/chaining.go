@@ -23,7 +23,7 @@ func NewChainingMap() *ChainingMap {
 }
 
 func (h *ChainingMap) Get(key string) (any, bool) {
-	bidx := hash(key) % len(h.buckets)
+	bidx := Hash(key) % len(h.buckets)
 	node := h.buckets[bidx]
 	for node != nil {
 		if node.key == key {
@@ -45,7 +45,7 @@ func (h *ChainingMap) Put(key string, value any) {
 }
 
 func (h *ChainingMap) Delete(key string) bool {
-	bidx := hash(key) % len(h.buckets)
+	bidx := Hash(key) % len(h.buckets)
 	currnode := h.buckets[bidx]
 	if currnode == nil {
 		return false
@@ -85,7 +85,7 @@ func (h *ChainingMap) grow() {
 }
 
 func put(buckets []*node, key string, value any) bool {
-	bidx := hash(key) % len(buckets)
+	bidx := Hash(key) % len(buckets)
 	currnode := buckets[bidx]
 	for currnode != nil {
 		if currnode.key == key {

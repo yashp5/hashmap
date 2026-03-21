@@ -80,7 +80,7 @@ func (h *ProbingMap) probe(key string, step int) int {
 	slotsprobed := 0
 	inc := 0
 	for {
-		probeidx := (hash(key) + inc) % len(h.slots)
+		probeidx := (Hash(key) + inc) % len(h.slots)
 		if h.slots[probeidx] == nil {
 			if firsttomb != -1 {
 				return firsttomb
